@@ -45,8 +45,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent emailIntent =new Intent(Intent.ACTION_SEND);
-                emailIntent.putExtra(Intent.EXTRA_EMAIL,new String[]{"abc@xyz.com"});
-                emailIntent.putExtra(Intent.EXTRA_TEXT,"body");
+                emailIntent.putExtra(Intent.EXTRA_EMAIL,new String[]{"goel8002@gmail.com"});
+                if (btnchc.isChecked() && !(btnchw.isChecked())) {
+                    emailIntent.putExtra(Intent.EXTRA_TEXT,"toppings:chocolate" +"\n "+
+                            "total expense="+(counter*(50+5)));
+                } else if (btnchw.isChecked() && !(btnchc.isChecked())) {
+                    emailIntent.putExtra(Intent.EXTRA_TEXT,"toppings:whipped cream" +"\n"+
+                            "total expense="+(counter*(50+10)));
+                } else if (btnchc.isChecked() && btnchw.isChecked()) {
+                    emailIntent.putExtra(Intent.EXTRA_TEXT,"toppings:chocolate and whipped cream" +"\n"+
+                            "total expense="+(counter*(50+10+5)));
+                } else {
+                    emailIntent.putExtra(Intent.EXTRA_TEXT,"toppings:none" +"\n"+
+                            "total expense=" +(counter*50));
+                }
                 emailIntent.setType("message/rfc822");
                 startActivity(Intent.createChooser(emailIntent,"choose one application"));
             }
@@ -89,7 +101,6 @@ counter=0;
         btnorder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int coffee_price = 50;
                 if (btnchc.isChecked() && !(btnchw.isChecked())) {
                     ed3.setText("toppings:chocolate" +"\n "+
                             "total expense="+(counter*(50+5)));

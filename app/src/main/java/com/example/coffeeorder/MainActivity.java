@@ -29,16 +29,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent emailIntent =new Intent(Intent.ACTION_SEND);
-                emailIntent.putExtra(Intent.EXTRA_EMAIL,new String[]{"abc@xyz.com"});
-                emailIntent.putExtra(Intent.EXTRA_TEXT,"body");
-                emailIntent.setType("message/rfc822");
-                startActivity(Intent.createChooser(emailIntent,"choose one application"));
-            }
-        });
 
         btnchw=(CheckBox) findViewById(R.id.btnchw);
         btnchc=(CheckBox) findViewById(R.id.btnchc);
@@ -50,6 +40,18 @@ public class MainActivity extends AppCompatActivity {
         ed3=(TextView) findViewById(R.id.ed3);
         ed2=(EditText)findViewById(R.id.ed2);
         ed1=(EditText)findViewById(R.id.ed1);
+
+        btnmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent emailIntent =new Intent(Intent.ACTION_SEND);
+                emailIntent.putExtra(Intent.EXTRA_EMAIL,new String[]{"abc@xyz.com"});
+                emailIntent.putExtra(Intent.EXTRA_TEXT,"body");
+                emailIntent.setType("message/rfc822");
+                startActivity(Intent.createChooser(emailIntent,"choose one application"));
+            }
+        });
+
         btnres.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
